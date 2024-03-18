@@ -4,14 +4,24 @@
 
 { config, pkgs, pkgs-unstable, myconfig, ... }:
 let
-  hostname = myconfig.hosts.h1.hostname;
+  host = myconfig.hosts.h1;
+  hostname = host.hostname;
+  comMod = import ../../common/nixos;
 in
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  [ 
+    ./hardware-configuration.nix
+    
+  ] ++ (with comMod; [
+    
+    nix
+
+    (if host.hybrid then hybrid else {})
+    (if myconfig.de == "gnome" then gnome else {})
+    (if myconfig.de == "cinnamon" then cinnamon else {})
+  ]);
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -47,10 +57,8 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the Cinnamon Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.cinnamon.enable = true;
+  services.xserver.libinput.enable = true;
+  
 
   # Configure keymap in X11
   services.xserver = {
@@ -81,8 +89,6 @@ in
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.neocrz = {
