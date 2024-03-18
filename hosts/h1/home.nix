@@ -21,6 +21,7 @@ in
   (with pkgs; [
     
     firefox
+    qbittorrent
     vscode
 
   ]) ++ (with pkgs-unstable; [
