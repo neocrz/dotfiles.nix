@@ -8,7 +8,6 @@ in
   imports = (with comMod; [
     bash
     git
-    kitty
     packages
     tmux
 
