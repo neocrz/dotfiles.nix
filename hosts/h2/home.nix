@@ -15,7 +15,7 @@ in
 
   home.packages = 
   (with pkgs; [
-    
+    openssh
   ]) ++ (with pkgs-unstable; [
 
   ]) ++ [ ];
