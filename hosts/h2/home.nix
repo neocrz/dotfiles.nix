@@ -1,15 +1,26 @@
 { config, pkgs, inputs, pkgs-unstable, myconfig, system, ... }:
+let 
+  
+  comMod = import ../../common/home;
 
+in
 {
-  imports = [ ];
+  imports = (with comMod; [
+    bash
+    git
+    kitty
+    packages
+    tmux
 
-  home.packages = (with pkgs; [
+  ]) ++ [ ];
 
+  home.packages = 
+  (with pkgs; [
+    
   ]) ++ (with pkgs-unstable; [
 
-  ]) ++ [
-    inputs.nixvim.packages.${system}.default
-  ];
+  ]) ++ [ ];
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

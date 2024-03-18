@@ -8,9 +8,14 @@ let
 in
 {
 
-  imports = [
-    comMod.git
-  ];
+  imports = (with comMod; [
+    bash
+    git
+    kitty
+    packages
+    tmux
+
+  ]) ++ [ ];
 
   home.packages = 
   (with pkgs; [
@@ -24,11 +29,7 @@ in
     obsidian
     telegram-desktop
     
-  ]) ++ [ 
-
-    inputs.nixvim.packages.${system}.default
-
-  ];
+  ]) ++ [ ];
 
   home.stateVersion = "23.11";
 

@@ -20,5 +20,8 @@
     };
 
     package = pkgs.nixFlakes;
+
   };
+
+  nixpkgs.config.allowUnfree = true;
 }
