@@ -29,6 +29,7 @@ in
     discord
     obsidian
     telegram-desktop
+    vlc
     
   ]) ++ [ ];
 
