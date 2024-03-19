@@ -33,7 +33,7 @@
   nix = {
     nixPath = [ "nixpkgs=${pkgs.path}" "unstable=${pkgs-unstable.path}" ];
     # Set up nix for flakes
-    nix.extraOptions = ''
+    extraOptions = ''
       experimental-features = nix-command flakes
     '';
   };
