@@ -1,7 +1,9 @@
-{config, pkgs, ...}:
+{config, pkgs, pkgs-unstable, ...}:
 
 {
   nix = {
+    
+    nixPath = [ "nixpkgs=${pkgs.path}" "unstable=${pkgs-unstable.path}" ];
 
     settings = {
 

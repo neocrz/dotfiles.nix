@@ -29,11 +29,14 @@
 
   # Read the changelog before changing this value
   system.stateVersion = "23.11";
-
-  # Set up nix for flakes
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  
+  nix = {
+    nixPath = [ "nixpkgs=${pkgs.path}" "unstable=${pkgs-unstable.path}" ];
+    # Set up nix for flakes
+    nix.extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # Set your time zone
   time.timeZone = "America/Sao_Paulo";

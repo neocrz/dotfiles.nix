@@ -39,5 +39,6 @@ in
 
   home.username = username;
   home.homeDirectory = "/home/${username}";
+  home.sessionVariables.NIX_PATH = "nixpkgs=${pkgs.path}:unstable=${pkgs-unstable.path}";
 
 }

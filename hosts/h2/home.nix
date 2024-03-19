@@ -30,8 +30,8 @@ in
   # changes in each release.
   home.stateVersion = "23.11";
 
+  home.sessionVariables.NIX_PATH = "nixpkgs=${pkgs.path}:unstable=${pkgs-unstable.path}";
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
   
 }
