@@ -24,6 +24,7 @@ in
   ] ++ (with comMod; [
     
     nix
+    virtualization
 
     (if host.hybrid then hybrid else {})
     (if myconfig.de == "gnome" then gnome else {})
