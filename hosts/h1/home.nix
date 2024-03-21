@@ -22,13 +22,13 @@ in
     
     firefox
     qbittorrent
+    telegram-desktop
     vscode
 
   ]) ++ (with pkgs-unstable; [
 
     discord
     obsidian
-    telegram-desktop
     vlc
     
   ]) ++ [ ];

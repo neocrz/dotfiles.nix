@@ -16,7 +16,8 @@ let
   comMod = import ../../common/nixos;
 in
 {
-  
+  services.tlp.enable = true;
+
   imports =
   [ 
     ./hardware-configuration.nix
