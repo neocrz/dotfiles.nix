@@ -28,6 +28,7 @@ in
   ]) ++ (with pkgs-unstable; [
 
     discord
+    nvtop
     obsidian
     vlc
     
