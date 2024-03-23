@@ -23,7 +23,7 @@ in
     ./hardware-configuration.nix
     
   ] ++ (with comMod; [
-    
+    adb    
     nix
     virtualization
 
