@@ -22,6 +22,7 @@ in
     
     firefox
     qbittorrent
+    scrcpy
     telegram-desktop
     vscode
 
