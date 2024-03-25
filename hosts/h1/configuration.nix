@@ -16,6 +16,7 @@ let
   comMod = import ../../common/nixos;
 in
 {
+  nixpkgs.config.allowUnfree = true;  
   services.tlp.enable = true;
 
   imports =

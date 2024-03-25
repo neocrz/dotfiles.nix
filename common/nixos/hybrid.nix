@@ -12,13 +12,29 @@ let
 in
 {
   services.xserver.videoDrivers = [ "intel" "nvidia" ];
-  hardware.opengl.enable = true;
-  hardware.nvidia.prime = {
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  nixpkgs.config.nvidia.acceptLicense = true;
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      inherit intelBusId nvidiaBusId;
     };
-    inherit intelBusId nvidiaBusId;
   };
 
   environment.systemPackages = with pkgs; [
