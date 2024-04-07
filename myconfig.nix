@@ -23,10 +23,19 @@
     };
 
     h2 = {
+
       system = "aarch64-linux";
       hostname = "droid";
 
       model = "Xiaomi MI 9";
+
+    };
+
+    h3 = {
+
+      system = "x86_64-linux";
+      hostname = "artix";
+
     };
   };
 

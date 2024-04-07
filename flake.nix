@@ -58,6 +58,24 @@
 
     };
 
+    homeConfigurations = {
+
+      ${ h.h3.hostname } = 
+      let
+        system = h.h3.system;
+        pkgs = genPkgs { n = nixpkgs; s = system;};
+        pkgs-unstable = genPkgs { n = nixpkgs-unstable; s = system; };
+      in
+
+      inputs.home-manager.lib.homeManagerConfiguration {
+
+        inherit pkgs;
+        extraSpecialArgs = { inherit inputs pkgs pkgs-unstable myconfig system; };
+        modules = [ ./hosts/h3/home.nix ];
+
+      };
+
+    };
 
     nixOnDroidConfigurations.default = 
     let 
