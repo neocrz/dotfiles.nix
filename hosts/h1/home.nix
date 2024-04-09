@@ -21,6 +21,7 @@ in
   (with pkgs; [
     
     firefox
+    glmark2
     qbittorrent
     scrcpy
     telegram-desktop
@@ -29,7 +30,7 @@ in
   ]) ++ (with pkgs-unstable; [
 
     discord
-    nvtop
+    nvtopPackages.full
     obsidian
     vlc
     
