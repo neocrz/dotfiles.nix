@@ -2,8 +2,16 @@
 
 let
   comMod = import ../../common/home;
+  wallpaper = builtins.fetchurl {
+    url="https://i.redd.it/rvuqbga8l2tc1.png";
+    sha256="10bpn0dm56qxaw121p7rzk4s5i512jxfw7186871df73dkamb0zy";
+  };
 in
 {
+  home.file."Pictures/wallpapers/wallpaper.png" = {
+    source = wallpaper;
+    recursive = true;
+  };
 
   imports = (with comMod; [
     git
@@ -11,50 +19,26 @@ in
     tmux
   ]) ++ [ ];
 
-
+  
   home.packages = (with pkgs; [
     vscode
     qbittorrent
+    xfce.thunar
   ]) ++ (with pkgs-unstable; [
     discord
     obsidian
     openssh
+    swayimg
     vlc
     telegram-desktop
   ]) ++ [];
 
+  xdg.enable = true;
+
   home.username = "eee";
   home.homeDirectory = "/home/eee";
-
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/eee/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
