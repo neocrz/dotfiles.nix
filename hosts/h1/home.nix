@@ -4,7 +4,6 @@ let
   username = myconfig.user.name; 
   
   comMod = import ../../common/home;
-
 in
 {
 
@@ -30,6 +29,7 @@ in
   ]) ++ (with pkgs-unstable; [
 
     discord
+    krita
     nvtopPackages.full
     obsidian
     vlc

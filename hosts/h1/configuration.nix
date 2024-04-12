@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unstable, myconfig, ... }:
+{ config, pkgs, pkgs-unstable, myconfig, inputs, ... }:
 let
 
   host = myconfig.hosts.h1;
@@ -14,6 +14,8 @@ let
   layout = host.layout;
 
   comMod = import ../../common/nixos;
+  
+  thisMod = import ./modules;
 in
 {
   nixpkgs.config.allowUnfree = true;  
@@ -31,6 +33,8 @@ in
     (if host.hybrid then hybrid else {})
     (if myconfig.de == "gnome" then gnome else {})
     (if myconfig.de == "cinnamon" then cinnamon else {})
+  ]) ++ (with thisMod; [
+    games
   ]);
 
   # Bootloader.
