@@ -30,6 +30,7 @@ in
 
     discord
     krita
+    libreoffice-qt
     nvtopPackages.full
     obsidian
     vlc
