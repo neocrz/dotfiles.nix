@@ -18,7 +18,7 @@ in
 
   home.packages = 
   (with pkgs; [
-    
+    davinci-resolve 
     firefox
     glmark2
     qbittorrent
